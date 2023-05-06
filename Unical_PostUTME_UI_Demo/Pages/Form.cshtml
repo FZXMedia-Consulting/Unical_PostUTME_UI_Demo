@@ -112,7 +112,9 @@
 				
 				<div class="col-12 p-1">
 					<label class="form-label">Gender </label>
-					<select class="form-control" asp-for="Input.Gender"></select>
+					<select class="form-control" asp-for="Input.Gender" asp-items="Model.GenderList()">
+						<option value="" selected disabled>Select Gender</option>
+					</select>
 					<span asp-validation-for="Input.Gender" class="text-danger small"></span>
 				</div>
 				

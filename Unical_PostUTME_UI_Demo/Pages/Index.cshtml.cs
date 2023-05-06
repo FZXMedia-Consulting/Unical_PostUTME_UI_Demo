@@ -15,7 +15,7 @@ namespace Unical_PostUTME_UI_Demo.Pages
 
         [BindProperty]
         [Required]
-		public string JamRegNumber { get; set; }
+		public string JambRegNumber { get; set; }
 
         [BindProperty]
         [Required]
@@ -29,7 +29,7 @@ namespace Unical_PostUTME_UI_Demo.Pages
             {
                 return Page();
             }
-            return RedirectToPage("./Form", new { JamRegNumber, Pin });
+            return RedirectToPage("./Form", new { JambRegNumber, Pin });
         }
     }
 }

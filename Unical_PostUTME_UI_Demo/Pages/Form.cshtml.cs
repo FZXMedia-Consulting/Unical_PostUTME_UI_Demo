@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 using System.Net.NetworkInformation;
 
@@ -39,6 +40,16 @@ namespace Unical_PostUTME_UI_Demo.Pages
 			}
 
 			return RedirectToPage("./Preview", Input);
+		}
+
+		public IEnumerable<SelectListItem> GenderList()
+		{
+			string genders = "Male, Female";
+			return genders.Split(",").Select(x => new SelectListItem
+			{
+				Text = x.Trim(),
+				Value = x.Trim()
+			});
 		}
     }
 }
