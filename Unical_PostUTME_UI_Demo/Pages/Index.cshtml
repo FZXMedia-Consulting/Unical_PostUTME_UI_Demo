@@ -1,0 +1,44 @@
+﻿@page
+@model IndexModel
+@{
+	ViewData["Title"] = "Validate Pin";
+	ViewData["BreadCrumbList"] = "<li class='breadcrumb-item'><a class='text-nowrap'>POST UTME</a></li><li class='breadcrumb-item text-nowrap' aria-current='page'>Validate Pin</li>";
+}
+
+<div class="row g-4 g-sm-5 justify-content-between">
+
+	<div class="col-lg-6 col-xl-5">
+		<div class="p-5">
+			<h4 class="fw-bold">Need POST UTME PIN?</h4>
+		</div>
+	</div>
+
+	<div class="col-lg-6 position-relative">
+	
+		<div class="bg-primary bg-opacity-10 rounded-3 p-4 p-sm-5" style="border-top-left-radius: 0 !important;border-bottom-left-radius: 0 !important;">
+
+			<form class="row g-4 g-sm-3 mt-2 mb-0" method="post">
+
+				<div class="text-danger" asp-validation-summary="All"></div>
+
+				<div class="col-12">
+					<label class="form-label">JAMB Registration Number <span class="text-danger">*</span></label>
+					<input type="text" class="form-control" asp-for="JamRegNumber">
+					<span asp-validation-for="JamRegNumber" class="text-danger small"></span>
+				</div>
+				
+				<div class="col-12">
+					<label class="form-label">PIN Number <span class="text-danger">*</span></label>
+					<input type="text" class="form-control" asp-for="Pin">
+					<span asp-validation-for="Pin" class="text-danger small"></span>
+				</div>
+
+				<!-- Button -->
+				<div class="col-12 d-grid">
+					<button type="submit" class="btn btn-lg btn-primary mb-0">Proceed</button>
+				</div>
+			</form>
+			<!-- Form END -->
+		</div>
+	</div>
+</div>

@@ -1,0 +1,173 @@
+﻿@page
+@model Unical_PostUTME_UI_Demo.Pages.FormModel
+@{
+	ViewData["Title"] = "Application Form For POST UTME";
+	ViewData["BreadCrumbList"] = "<li class='breadcrumb-item'><a class='text-nowrap'>POST UTME</a></li><li class='breadcrumb-item'><a class='text-nowrap' href='/'>Validate Pin</a></li><li class='breadcrumb-item text-nowrap' aria-current='page'>Registration Form</li>";
+
+}
+
+<div class="row g-4 g-sm-5 justify-content-between">
+
+	<div class="col-lg-6 col-xl-5">
+		<div class="p-5">
+
+			<h3>Get awesome experience in an online class with our superior instructor</h3>
+
+			<div class="row mt-4">
+
+				<div class="col-12 mb-5">
+					<div class="d-flex align-items-center">
+
+						<div>
+							<div class="icon-xl bg-body shadow rounded-circle">
+								<img src="assets/images/element/child.svg" class="h-40px" alt="">
+							</div>
+						</div>
+
+						<div class="ms-3">
+							<h5 class="mb-0">We care about students</h5>
+							<p class="text-truncate-2 mb-0">
+								Man children rejoiced yet uncommonly his ten
+								who. Yet uncommonly his ten who diminution astonished.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-12 mb-5">
+					<div class="d-flex align-items-center">
+
+						<div>
+							<div class="icon-xl bg-body shadow rounded-circle">
+								<img src="assets/images/element/help.svg" class="h-40px" alt="">
+							</div>
+						</div>
+						<!-- Title -->
+						<div class="ms-3">
+							<h5 class="mb-0">Helping struggling students</h5>
+							<p class="text-truncate-2 mb-0">
+								Children rejoiced yet uncommonly his ten who.
+								Yet uncommonly his ten who diminution astonished.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-lg-6 position-relative">
+
+		<div class="bg-primary bg-opacity-10 rounded-3 p-4 p-sm-5" style="border-top-left-radius: 0 !important;border-bottom-left-radius: 0 !important;">
+
+			<form class="row g-4 g-sm-3 mt-2 mb-0" method="post">
+
+				<div class="text-danger" asp-validation-summary="All"></div>
+
+				<div class="col-12 d-flex justify-content-center">
+					<div class="d-block">
+						<div class="avatar-container">
+							<img id="avatar-preview" class="img-thumbnail" src="img/img1.jpg" alt="Avatar Preview">
+							<label asp-for="Input.Passport" class="btn btn-dark opacity-8 btn-sm">
+								Upload Passport<input asp-for="Input.Passport" type="file"onchange="readURL(this);" accept="image/*" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+							</label>
+							<button type="button" onclick="deleteFile()" class="btn btn-sm btn-outline-secondary">Delete</button>
+						</div>
+						
+					</div>
+					
+				</div>
+
+
+				<div class="col-12 p-1">
+					<label class="form-label">Pin </label>
+					<input type="text" asp-for="Input.Pin" disabled readonly class="form-control" />
+					<span asp-validation-for="Input.Pin " class="text-danger small"></span>
+				</div>
+
+				<div class="col-12 p-1">
+					<label class="form-label">Full Names *</label>
+					<div class="row">
+						<div class="col pe-0">
+							<input asp-for="Input.SurName" class="form-control" style="border-top-right-radius:0 !important; border-bottom-right-radius:0 !important" placeholder="SurName" aria-label="SurName">
+							<span asp-validation-for="Input.SurName " class="text-danger small"></span>
+						</div>
+						<div class="col p-0">
+							<input asp-for="Input.FirstName" class="form-control" style="border-radius:0 !important" placeholder="FirstName" aria-label="FirstName">
+							<span asp-validation-for="Input.FirstName " class="text-danger small"></span>
+						</div>
+						<div class="col ps-0">
+							<input asp-for="Input.LastName" class="form-control" style="border-top-left-radius:0 !important; border-bottom-left-radius:0 !important" placeholder="LastName" aria-label="LastName">
+							<span asp-validation-for="Input.LastName " class="text-danger small"></span>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-12 p-1">
+					<label class="form-label">Date of birth </label>
+					<input type="text" asp-for="Input.BirthDate" class="form-control" />
+					<span asp-validation-for="Input.BirthDate " class="text-danger small"></span>
+				</div>
+				
+				<div class="col-12 p-1">
+					<label class="form-label">Gender </label>
+					<select class="form-control" asp-for="Input.Gender"></select>
+					<span asp-validation-for="Input.Gender" class="text-danger small"></span>
+				</div>
+				
+				<div class="col-12 p-1">
+					<label class="form-label">JAMB Reg Number </label>
+					<input asp-for="Input.JambRegNumber" disabled readonly class="form-control" />
+					<span asp-validation-for="Input.JambRegNumber " class="text-danger small"></span>
+				</div>
+
+				<div class="col-12 p-1">
+					<label asp-for="Input.Email" class="form-label">Email</label>
+					<input asp-for="Input.Email" type="email" class="form-control">
+					<span asp-validation-for="Input.Email" class="text-danger small"></span>
+				</div>
+
+
+				<div class="col-12">
+					<label class="form-label">Phone number</label>
+					<input asp-for="Input.PhoneNumber" class="form-control" aria-label="Phone number">
+					<span asp-validation-for="Input.PhoneNumber " class="text-danger small"></span>
+				</div>
+
+
+				<div class="col-12 d-grid mt-5">
+					<button type="submit" class="btn btn-lg btn-primary mb-0">Proceed</button>
+				</div>
+			</form>
+			<!-- Form END -->
+		</div>
+	</div>
+</div>
+@section Scripts{
+    <link href="~/vendor/flatpickr/dist/flatpickr.min.css" rel="stylesheet" />
+	<script src="~/vendor/flatpickr/dist/flatpickr.min.js"></script>
+	<script asp-append-version="true">
+		$("#Input_BirthDate").flatpickr();
+
+
+		function readURL(input) {
+			if (input.files && input.files[0] && input != null) {
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					$('#avatar-preview').attr('src', e.target.result);
+					//var fileName = input.files.val().split("\\").pop();
+					//input.next(".custom-file-label").html(fileName);
+				};
+				reader.readAsDataURL(input.files[0]);
+			}
+
+		}
+
+		function deleteFile(){
+			$(".uploadFile").val("");
+			$('#avatar-preview').attr('src', 'img/img1.jpg');
+		}
+
+	</script>
+}
