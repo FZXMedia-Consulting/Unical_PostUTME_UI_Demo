@@ -26,18 +26,25 @@ namespace Unical_PostUTME_UI_Demo.Pages
 		[BindProperty]
 		public FormInput Input { get; set; }
 
-
-		public void OnGet(string JambRegNumber, string Pin)
+        public IActionResult OnGet(string jambRegNumber, string pin, FormInput data)
         {
-			Input = new FormInput { Pin = Pin, JambRegNumber = JambRegNumber };
+			if (string.IsNullOrEmpty(jambRegNumber) || string.IsNullOrEmpty(pin)) 
+				return RedirectToPage("./Index");
+
+			if (data != null)
+			{
+				Input = data;
+			}
+
+			Input.Pin = pin;
+			Input.JambRegNumber = jambRegNumber;
+
+			return Page();
 		}
 
 		public IActionResult OnPostAsync()
 		{
-			if (!ModelState.IsValid)
-			{
-				return Page();
-			}
+			if (!ModelState.IsValid) return Page();
 
 			return RedirectToPage("./Preview", Input);
 		}

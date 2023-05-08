@@ -60,7 +60,7 @@
 
 		<div class="bg-primary bg-opacity-10 rounded-3 p-4 p-sm-5" style="border-top-left-radius: 0 !important;border-bottom-left-radius: 0 !important;">
 
-			<form class="row g-4 g-sm-3 mt-2 mb-0" method="post">
+			<form class="row g-4 g-sm-3 mt-2 mb-0" enctype="multipart/form-data" method="post">
 
 				<div class="text-danger" asp-validation-summary="All"></div>
 
@@ -75,14 +75,13 @@
 						</div>
 						
 					</div>
-					
 				</div>
-
 
 				<div class="col-12 p-1">
 					<label class="form-label">Pin </label>
-					<input type="text" asp-for="Input.Pin" disabled readonly class="form-control" />
-					<span asp-validation-for="Input.Pin " class="text-danger small"></span>
+					<input type="text" value="@Model.Input.Pin" disabled readonly class="form-control" />
+					<input type="text" asp-for="Input.Pin" hidden class="form-control" />
+					<span asp-validation-for="Input.Pin" class="text-danger small"></span>
 				</div>
 
 				<div class="col-12 p-1">
@@ -104,6 +103,13 @@
 
 				</div>
 
+                <div class="col-12 p-1">
+                    <label class="form-label">JAMB Reg Number </label>
+                    <input value="@Model.Input.JambRegNumber" disabled readonly class="form-control" />
+                    <input asp-for="Input.JambRegNumber" hidden class="form-control" />
+                    <span asp-validation-for="Input.JambRegNumber " class="text-danger small"></span>
+                </div>
+
 				<div class="col-12 p-1">
 					<label class="form-label">Date of birth </label>
 					<input type="text" asp-for="Input.BirthDate" class="form-control" />
@@ -118,12 +124,6 @@
 					<span asp-validation-for="Input.Gender" class="text-danger small"></span>
 				</div>
 				
-				<div class="col-12 p-1">
-					<label class="form-label">JAMB Reg Number </label>
-					<input asp-for="Input.JambRegNumber" disabled readonly class="form-control" />
-					<span asp-validation-for="Input.JambRegNumber " class="text-danger small"></span>
-				</div>
-
 				<div class="col-12 p-1">
 					<label asp-for="Input.Email" class="form-label">Email</label>
 					<input asp-for="Input.Email" type="email" class="form-control">
