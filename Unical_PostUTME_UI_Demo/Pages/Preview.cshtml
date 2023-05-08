@@ -1,4 +1,94 @@
 ﻿@page
 @model Unical_PostUTME_UI_Demo.Pages.PreviewModel
 @{
+    ViewData["Title"] = "Preview Registration";
+    ViewData["BreadCrumbList"] = "<li class='breadcrumb-item'><a class='text-nowrap'>POST UTME</a></li><li class='breadcrumb-item'><a class='text-nowrap' href='/'>Validate Pin</a></li><li class='breadcrumb-item'><a class='text-nowrap' href='/Form'>Registration Form</a></li><li class='breadcrumb-item text-nowrap' aria-current='page'>Preview</li>";
+
+}
+
+
+<div class="row  g-4 g-sm-5">
+    <div class="col-12">
+        <form class="p-4 p-sm-5" enctype="multipart/form-data" method="post">
+
+            <div class="d-flex justify-content-end">
+                <a asp-page="./Form" asp-route-jambRegNumber="@Model.Input.JambRegNumber" asp-route-pin="@Model.Input.Pin" asp-route-data="@Model.Input" class="btn me-3 btn-outline-secondary">Go back</a>
+                <button type="button" class="btn btn-success">Submit</button>
+            </div>
+
+            <hr class="mb-5 mt-3" />
+
+            <div class="mb-3 d-flex justify-content-center align-items-center">
+                <img id="avatar-preview" class="img-thumbnail" src="img/img1.jpg" alt="Avatar Preview">
+                <input asp-for="Input.Passport" hidden type="file" onchange="readURL(this);" accept="image/*" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+            </div>
+            
+            <div class="mb-3 row align-items-center">
+                <label class="col-md-2 col-form-label" for="search-input">Pin</label>
+                <div class="col-md-10">
+                    <input readonly asp-for="Input.Pin" class="form-control" />
+                </div>
+            </div>
+
+            <div class="mb-3 row align-items-center">
+                <label class="col-md-2 col-form-label" for="text-input">Full Names</label>
+                <div class="col-md-10">
+                    <input readonly asp-for="Input.FullNames" class="form-control" />
+                    <input hidden asp-for="Input.SurName" class="form-control" />
+                    <input hidden asp-for="Input.FirstName" class="form-control" />
+                    <input hidden asp-for="Input.LastName" class="form-control" />
+                </div>
+            </div>
+
+            <div class="mb-3 row align-items-center">
+                <label class="col-md-2 col-form-label" for="search-input">Jamb Reg Number</label>
+                <div class="col-md-10">
+                    <input readonly asp-for="Input.JambRegNumber" class="form-control" />
+                </div>
+            </div>
+
+
+            <div class="mb-3 row align-items-center">
+                <label class="col-md-2 col-form-label" for="search-input">Date of birth</label>
+                <div class="col-md-10">
+                    <input readonly asp-for="Input.BirthDate" class="form-control" />
+                </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-md-2 col-form-label" asp-for="Input.Gender">Gender</label>
+                <div class="col-md-10">
+                    <input readonly asp-for="Input.Gender" class="form-control" />
+                </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-md-2 col-form-label" for="email-input">Email Address</label>
+                <div class="col-md-10">
+                    <input readonly asp-for="Input.Email" class="form-control" />
+                </div>
+            </div>
+            <div class="mb-3 row align-items-center">
+                <label class="col-md-2 col-form-label" asp-for="Input.PhoneNumber">Phone Number</label>
+                <div class="col-md-10">
+                    <input readonly asp-for="Input.PhoneNumber" class="form-control" />
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+@section Scripts{
+    <script asp-append-version="true">
+        $(() => {
+            let passportFIle = $("#Input_Passport");
+            if (passportFIle.files && passportFIle.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#avatar-preview').attr('src', e.target.result);
+                    //var fileName = input.files.val().split("\\").pop();
+                    //input.next(".custom-file-label").html(fileName);
+                };
+                reader.readAsDataURL(passportFIle.files[0]);
+            }
+        });
+    </script>
 }
